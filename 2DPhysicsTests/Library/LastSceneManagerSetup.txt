@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Scenes/003_Receiver_Cornerback_Tests.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
