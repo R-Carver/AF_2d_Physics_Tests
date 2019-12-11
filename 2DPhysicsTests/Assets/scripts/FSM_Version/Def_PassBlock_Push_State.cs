@@ -35,7 +35,6 @@ public class Def_PassBlock_Push_State : DefenderBaseState
             float prob = GetNaiveActionProb();
             if(prob <= 0.5f)
             {   
-                Debug.Log("Pushing");
                 //Default Action
                 DuellRotate(player);
                 
@@ -97,7 +96,6 @@ public class Def_PassBlock_Push_State : DefenderBaseState
 
     public override void CleanUp(DefenderController_FSM player)
     {   
-        Debug.Log("CleanUp");
         player.myRb.angularVelocity = 0.0f;
     }
 }

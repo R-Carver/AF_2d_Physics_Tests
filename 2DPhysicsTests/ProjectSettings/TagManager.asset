@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Defender
+  - OLiner
+  - Ball
+  - Receiver
   layers:
   - Default
   - TransparentFX

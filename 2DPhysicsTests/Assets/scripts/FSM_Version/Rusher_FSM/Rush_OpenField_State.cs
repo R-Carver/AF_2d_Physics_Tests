@@ -25,6 +25,7 @@ public class Rush_OpenField_State : Rush_Base_State
         if(col.gameObject.tag == "Defender")
         {
             rusher.Target = col.transform;
+            rusher.defender = col.GetComponent<DefenderController_FSM>();
 
             rusher.TransitionToState(rusher.oppVisible_State);
         }

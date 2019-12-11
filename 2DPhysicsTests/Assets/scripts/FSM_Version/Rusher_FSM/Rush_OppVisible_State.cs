@@ -14,9 +14,7 @@ public class Rush_OppVisible_State : Rush_Base_State
 
     public override void EnterState(Rusher_Controller_FSM rusher)
     {   
-        Debug.Log("Opponent State entered");
         myRb = rusher.myRb;
-
         //Decide if you want to go inside or outside
         //for now go outside
         rushMode = getRandomRushmode();

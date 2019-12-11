@@ -11,11 +11,12 @@ public class Receiver_Routes
         if(Instance == null)
         {
             Instance = this;
+            InitRoutes();
         }else
         {
-            Debug.LogError("There shouldnt ever be 2 Receiver_Ropoute classes");
+            //Debug.LogError("There shouldnt ever be 2 Receiver_Ropoute classes");
         }
-        InitRoutes();
+        
     }
 
     //make a dict from enum to route
@@ -32,28 +33,71 @@ public class Receiver_Routes
         Vector2 right = new Vector2(0, -1);
 
 
+        //post
+        Vector2[] postPoints = new Vector2[1];
 
-        //slant-left
-        Vector2[] slantPoints = new Vector2[2];
-
-        slantPoints[0] = forward;
-        slantPoints[1] = forward_left;
+        postPoints[0] = forward * 7;
         
-        Route slantRoute = new Route(RouteName.Slant_Left, slantPoints);
+        Route postRoute = new Route(RouteName.Post, postPoints);
 
-        routes.Add(RouteName.Slant_Left, slantRoute);
+        routes.Add(postRoute.routeName, postRoute);
 
         //--------------------------------------------------------------
 
+        //slant-left
+        Vector2[] slantLPoints = new Vector2[2];
 
+        slantLPoints[0] = forward * 2;
+        slantLPoints[1] = forward_left * 4;
+        
+        Route slantLRoute = new Route(RouteName.Slant_Left, slantLPoints);
+
+        routes.Add(slantLRoute.routeName, slantLRoute);
+
+        //--------------------------------------------------------------
+
+        //slant-right
+        Vector2[] slantRPoints = new Vector2[2];
+
+        slantRPoints[0] = forward * 2;
+        slantRPoints[1] = forward_right * 4;
+        
+        Route slantRRoute = new Route(RouteName.Slant_Right, slantRPoints);
+
+        routes.Add(slantRRoute.routeName, slantRRoute);
+
+        //--------------------------------------------------------------
+
+        //insode-left
+        Vector2[] insideLPoints = new Vector2[2];
+
+        insideLPoints[0] = forward * 2;
+        insideLPoints[1] = left * 5;
+        
+        Route insideLRoute = new Route(RouteName.Inside_Left, insideLPoints);
+
+        routes.Add(insideLRoute.routeName, insideLRoute);
+
+        //--------------------------------------------------------------
+
+        //insode-right
+        Vector2[] insideRPoints = new Vector2[2];
+
+        insideRPoints[0] = forward * 2;
+        insideRPoints[1] = right * 5;
+        
+        Route insideRRoute = new Route(RouteName.Inside_Right, insideRPoints);
+
+        routes.Add(insideRRoute.routeName, insideRRoute);
+
+        //--------------------------------------------------------------
     }
-
 
 }
 
 public class Route
 {   
-    RouteName routeName;
+    public RouteName routeName;
 
     //the vectors are relative
     public Vector2[] routePoints;
@@ -67,19 +111,42 @@ public class Route
 
     public Vector2 GetFirstRoutePoint()
     {
-        currentRoutePoint++;
         return routePoints[0];
     }
 
     public Vector2 GetNextRoutePoint()
-    {
+    {   
+        currentRoutePoint++;
         if(currentRoutePoint < routePoints.Length)
         {
             Vector2 outPoint = routePoints[currentRoutePoint];
-            currentRoutePoint++;
             return outPoint;
         }else
         {
+            return Vector2.zero;
+        }
+    }
+
+    public Vector2 peakCurrentRoutePoint()
+    {
+        if(currentRoutePoint < routePoints.Length)
+        {
+            return routePoints[currentRoutePoint];
+        }else
+        {
+            //Debug.LogError("Asked for a Routepoint which is not there");
+            return Vector2.zero;
+        }
+    }
+
+    public Vector2 peakNextRoutePoint()
+    {
+        if(currentRoutePoint+1 < routePoints.Length)
+        {
+            return routePoints[currentRoutePoint+1];
+        }else
+        {
+            //Debug.LogError("Asked for a Routepoint which is not there");
             return Vector2.zero;
         }
     }

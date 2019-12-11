@@ -37,11 +37,11 @@ public class Def_PassBlock_State : DefenderBaseState
             if(IsLeft(defenderQbVector, receiverQbVector))
             {
                 player.myRb.AddRelativeForce(Vector2.up * player.speed);
-                Debug.Log("Is left");
+                //Debug.Log("Is left");
             }else
             {
                 player.myRb.AddRelativeForce(Vector2.up * - player.speed);
-                Debug.Log("Is right");
+                //Debug.Log("Is right");
             }
             frameCounter = 20;    
         }else

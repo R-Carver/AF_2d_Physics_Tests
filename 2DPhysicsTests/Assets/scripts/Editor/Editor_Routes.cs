@@ -17,9 +17,9 @@ public class Editor_Routes : Editor
             //the lineSegments need a start and end point for EACH line, thus the *2
             Vector3[] lineSegments = new Vector3[numOfRoutePoints * 2];
 
-            Vector3 prevPoint = new Vector3(-2, 2, 0);
-
-
+            //Vector3 prevPoint = new Vector3(-2, -2, 0);
+            Vector3 prevPoint = receiver_controller.startPos;
+            
             int pointIndex = 0;
             for (int i = 0; i < numOfRoutePoints; i++)
             {

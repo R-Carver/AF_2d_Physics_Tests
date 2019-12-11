@@ -45,7 +45,7 @@ public class Rusher_Controller_FSM : MonoBehaviour
     {
         //this it probably not a good idea since it makes this object depend on the defender
         //but for now its ok
-        if(defender.currentState is Def_KnockedOver_State)
+        if(defender.currentState is Def_KnockedOver_State && defender != null)
         {
             TransitionToState(qbChase_State);
         }
