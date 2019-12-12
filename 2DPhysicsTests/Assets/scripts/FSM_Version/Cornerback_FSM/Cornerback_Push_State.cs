@@ -32,8 +32,27 @@ public class Cornerback_Push_State : Cornerback_Base_State
     }
 
     IEnumerator Release(Cornerback_Controller_FSM cornerback)
-    {
+    {   
         yield return new WaitForSeconds(1);
         cornerback.transform.GetComponent<BoxCollider2D>().enabled = false;
+        
+    }
+
+    public override void OnCollisionExit(Cornerback_Controller_FSM cornerback, Collision2D other)
+    {
+    }
+
+    public override void OnTriggerEnter(Cornerback_Controller_FSM cornerback, Collider2D other)
+    {
+        
+    }
+
+    public override void OnTriggerExit(Cornerback_Controller_FSM cornerback, Collider2D other)
+    {   
+        if(other.gameObject.tag == "Receiver")
+        {
+            Debug.Log("Trigger in Push State");
+            cornerback.TransitionToState(cornerback.cover_State);
+        }
     }
 }

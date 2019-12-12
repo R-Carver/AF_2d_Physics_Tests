@@ -13,7 +13,6 @@ public class Editor_Routes : Editor
         {
             int numOfRoutePoints = receiver_controller.currentRoute.routePoints.Length;
 
-            Debug.Log(numOfRoutePoints);
             //the lineSegments need a start and end point for EACH line, thus the *2
             Vector3[] lineSegments = new Vector3[numOfRoutePoints * 2];
 

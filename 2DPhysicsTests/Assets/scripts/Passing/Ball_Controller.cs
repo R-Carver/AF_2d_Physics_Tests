@@ -44,6 +44,7 @@ public class Ball_Controller : MonoBehaviour
         //print("curr LaunchData   " + currentLaunchData.initialVelocity);
         ball.velocity = CalculateLaunchData().initialVelocity;
         ball.angularVelocity = Vector3.zero;
+        launched = true;
     }
 
     public LaunchData CalculateLaunchData(){

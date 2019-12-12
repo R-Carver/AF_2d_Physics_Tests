@@ -15,6 +15,8 @@ public class QB_Controller_FSM : MonoBehaviour
 
     public float targetOffset;
 
+    bool isSacked = false;
+
     #endregion
 
     #region FSM
@@ -23,6 +25,7 @@ public class QB_Controller_FSM : MonoBehaviour
 
     public readonly QB_ChooseTarget_State chooserTarget_State = new QB_ChooseTarget_State();
     public readonly QB_Throw_State throw_State = new QB_Throw_State();
+    public readonly QB_Sacked_State sacked_State = new QB_Sacked_State();
 
     #endregion
     
@@ -58,6 +61,19 @@ public class QB_Controller_FSM : MonoBehaviour
         {
             currentState.Update(this);
         }    
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {   
+        if(other.gameObject.tag == "PassRusher")
+        {   
+            if(isSacked == false)
+            {   
+                isSacked = true;
+                TransitionToState(sacked_State);
+            }
+        }
+        
     }
 
     public Transform InstantiateTargetIndicator(Vector3 position)

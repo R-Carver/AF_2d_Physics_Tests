@@ -12,7 +12,7 @@ public class Def_KnockedOver_State : DefenderBaseState
     {   
         Color col = player.GetComponent<SpriteRenderer>().color;
         col.a = 0.3f;
-        Debug.Log(col);
+        //Debug.Log(col);
         player.GetComponent<SpriteRenderer>().color = col;
 
         oldSpriteObj = player.transform.Find("ImgDir").gameObject;

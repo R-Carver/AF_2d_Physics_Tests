@@ -16,10 +16,11 @@ public class Receiver_RunRoute_State : Receiver_Base_State
 
     public override void OnCollisionEnter(Receiver_Controller_FSM receiver, Collider2D col)
     {   
-        //Debug.Log(col.gameObject);
-        //ball catching
+        //catch ball
         if(col.gameObject.tag == "Ball")
-        {
+        {   
+            col.gameObject.tag = "BallCaught";
+
             Transform ballGo = col.gameObject.transform.parent;
             //ballGo.parent.GetComponent<Ball_Controller>().enabled = false;
             ballGo.parent = receiver.transform;

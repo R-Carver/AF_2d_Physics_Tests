@@ -8,6 +8,9 @@ TagManager:
   - OLiner
   - Ball
   - Receiver
+  - BallCaught
+  - QB
+  - PassRusher
   layers:
   - Default
   - TransparentFX
